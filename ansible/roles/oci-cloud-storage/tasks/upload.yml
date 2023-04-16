@@ -1,13 +1,13 @@
 ---
 - name: Ensure oci oss bucket exists
-  command: /var/lib/jenkins/bin/oci os bucket get --name {{ oss_bucket_name }}
+  command: oci os bucket get --name {{ oss_bucket_name }}
   become: true
   become_user: jenkins
 #   environment:
 #     OCI_CLI_AUTH: instance_principal
 
 - name: Upload to oci oss bucket
-  command: /var/lib/jenkins/bin/oci os object put -bn {{ oss_bucket_name }} --name {{ oss_path }} --file {{ local_file_or_folder_path }} --content-type auto --force
+  command: oci os object put -bn {{ oss_bucket_name }} --name {{ oss_path }} --file {{ local_file_or_folder_path }} --content-type auto --force
   become: true
   become_user: jenkins
 #   environment:
